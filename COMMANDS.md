@@ -1,18 +1,15 @@
-Start your Phoenix app with:
+### Start your Phoenix app with: 
+`$ mix phx.server`
 
-    $ mix phx.server
+### You can also run your app inside IEx (Interactive Elixir) as:
 
-You can also run your app inside IEx (Interactive Elixir) as:
+`$ iex -S mix phx.server`
 
-    $ iex -S mix phx.server
-
-
-=============================================================================================
-
-If you want to create a new model with his view and template run 
+### If you want to create a new model with his view and template run 
 
 mix phx.gen.html Persons Person persons name:string description:text
 
+```
 C:\Users\juan.figueroa\Documents\ELIXIR\mix-projects\hello> mix phx.gen.html Persons Person persons name:string description:text
 * creating lib/hello_web/controllers/person_controller.ex
 * creating lib/hello_web/templates/person/edit.html.heex
@@ -30,73 +27,53 @@ C:\Users\juan.figueroa\Documents\ELIXIR\mix-projects\hello> mix phx.gen.html Per
 * injecting test/hello/persons_test.exs
 * creating test/support/fixtures/persons_fixtures.ex
 * injecting test/support/fixtures/persons_fixtures.ex
+```
 
-Add the resource to your browser scope in lib/hello_web/router.ex:
+### How to add all the RESTful verbs to the router on a single line
 
-    resources "/persons", PersonController
-
-
-Remember to update your repository by running migrations:
-
-    $ mix ecto.migrate
-
-mix ecto.migrate
-Just visit localhost:4000/persons and have fun!
-
-=============================================================================================
+`resources "/persons", PersonController`
 
 
+### Remember to update your repository by running migrations:
 
+`$ mix ecto.migrate`
 
+After this Just visit `localhost:4000/persons` and have fun!
 
-
-https://blog.logrocket.com/build-rest-api-elixir-phoenix/#lifecycle-of-phoenix-requests
 
 ## This project was created using this command
-mix phx.new users_api --no-html --no-webpack --binary-id
 
-# Generating a context of modules for Admin section
-mix phx.gen.context Admin User users   name:string email:string:unique role:string address:string
+`mix phx.new users_api --no-html --no-webpack --binary-id`
 
-# run ecto.migrate inmedditaly after this
-mix ecto.migrate
+## Generating a context of modules for Admin section
 
-# Generate controller and view to handle json requests
-# we pass --no-context and --no-schema since we already created those on the last command
+`mix phx.gen.context Admin User users   name:string email:string:unique role:string address:string`
+
+Run ecto.migrate immediately after this
+
+`mix ecto.migrate`
+
+## Generate controller and view to handle json requests
+we pass --no-context and --no-schema since we already created those on the last command
 mix phx.gen.json Admin User users name:string email:string:unique role:string address:string --no-context --no-schema
 
-# if when creating a new model and controller and running the route tells you 
-# that migrations needs to be done and then you do ecto.migrate and 
-# it throws a message that a create_users is duplicated in priv/repos/migrations
-# tun this command then try to run ecto.migrate or ecto.create again
-mix clean
+## If when creating a new model and controller and running the route tells you that migrations needs to be done
+If when creating a new model and controller and running the route tells you 
+that migrations needs to be done and then you do ecto.migrate and 
+it throws a message that a create_users is duplicated in priv/repos/migrations
+tun this command then try to run ecto.migrate or ecto.create again
 
+`mix clean`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-===============================================================================================================
-## Run phoenix project from iex interactive shell and Debug functions to get info about the app or run functions manually.
-
+## Running phoenix project from iex interactive shell 
+and Debug functions to get info about the app or run functions manually.
 ON the root of your phoenix project run the following
 
-iex -S mix
+`iex -S mix`
 
 This will load the project on iex
 
----------------------------------------------------------------------------------------------
+```
 C:\Users\juan.figueroa\Documents\ELIXIR\mix-projects\users_api>iex -S mix
 warning: the :gettext compiler is no longer required in your mix.exs.
 
@@ -112,16 +89,19 @@ Please find the following line in your mix.exs and remove the :gettext entry:
   (mix 1.14.1) lib/mix/tasks/compile.all.ex:33: Mix.Tasks.Compile.All.run/1
 
 Interactive Elixir (1.14.1) - press Ctrl+C to exit (type h() ENTER for help)
-----------------------------------------------------------------------------------------------------
+```
 
 After this you can run for example this command to see if a route is correctly applied to the project 
 (you can also run on the shell mix phx.routes for a raw view)
 
-----------------------------------
+```
 iex(16)> UsersApiWeb.Router.Helpers.user_path(UsersApiWeb.Endpoint, :create) |> IO.inspect
 "/api/users"
 "/api/users"
-----------------------------------
+```
 
-*SOURCE*: https://hexdocs.pm/phoenix/routing.html#path-helpers
-============================================================================================================================
+
+## Sources
+
+* https://blog.logrocket.com/build-rest-api-elixir-phoenix/#lifecycle-of-phoenix-requests
+* https://hexdocs.pm/phoenix/routing.html#path-helpers
